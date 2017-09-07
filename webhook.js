@@ -21,9 +21,22 @@ router.post('/', function (req, res) {
     }
 
     // the value of Action from api.ai is stored in req.body.result.action
-    console.log('* Received action -- %s', req.body.result.action)
+    let action = req.body.result.action;
+    switch (action) {
+        case "resolveName":
+            resolveName(req, res);
+            break;
+        default:
+            fallback(req, res);
+    }
+});
 
-    // parameters are stored in req.body.result.parameters
+function fallback(req, res) {
+    return res.status(400).send('Unknown intent');
+}
+
+
+function resolveName(req, res) {
     var userName = req.body.result.parameters['name']
     var webhookReply = 'Hello ' + userName + '! Welcome from the webhook.'
 
@@ -33,6 +46,6 @@ router.post('/', function (req, res) {
         speech: webhookReply,
         displayText: webhookReply
     })
-});
+}
 
 module.exports = router;
