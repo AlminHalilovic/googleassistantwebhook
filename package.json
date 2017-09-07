@@ -1,0 +1,11 @@
+{
+  "name": "google_assistant_sample_webhook",
+  "version": "1.0.0",
+  "description": "Sample implementation of webhook for Google Assistant technology",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Almin Halilovic",
+  "license": "ISC"
+}
