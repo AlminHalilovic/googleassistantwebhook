@@ -45,7 +45,7 @@ function setNumber(req, res) {
     var webhookReply = 'Number is set to ' + number;
     if (!number) {
         webhookReply = 'Unknown number';
-        return res.status(400).json({
+        return res.status(200).json({
             source: 'webhook',
             speech: webhookReply,
             displayText: webhookReply
@@ -54,13 +54,13 @@ function setNumber(req, res) {
 
     if (number < 5 || number > 100) {
         webhookReply = 'Number must be between 0 and 100';
-        return res.status(400).json({
+        return res.status(200).json({
             source: 'webhook',
             speech: webhookReply,
             displayText: webhookReply
         });
     }
-    var webhookReply = 'Number is set to ' + number;
+
     // the most basic response
     res.status(200).json({
         source: 'webhook',
