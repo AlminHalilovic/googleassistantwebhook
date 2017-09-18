@@ -42,6 +42,13 @@ function resolveName(req, res) {
 
 function setNumber(req, res) {
     var number = req.body.result.parameters['number']
+
+    if (!number)
+        return res.status(400).send('Unknown number');
+
+    if (number < 5 || number > 100)
+        return res.status(400).send('Number must be between 5 and 100');
+
     var webhookReply = 'Number is set to ' + number;
     // the most basic response
     res.status(200).json({
